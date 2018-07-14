@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using HometaskEntity.DAL.Models;
 
-namespace homework_5_bsa2018.DAL
+namespace HometaskEntity
 {
     public class AirportContext : DbContext
     {

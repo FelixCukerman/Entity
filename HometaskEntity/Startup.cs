@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using HometaskEntity.BLL.Contracts;
+using HometaskEntity.BLL.DTOs;
+using HometaskEntity.BLL.Service;
+using HometaskEntity.DAL.Contracts;
+using HometaskEntity.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace HometaskEntity
 {
@@ -24,6 +25,18 @@ namespace HometaskEntity
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddAutoMapper();
+            services.AddSingleton<IService<AviatorDTO>, AviatorService>();
+            services.AddSingleton<IService<CrewDTO>, CrewService>();
+            services.AddSingleton<IService<DepartureDTO>, DepartureService>();
+            services.AddSingleton<IService<FlightDTO>, FlightService>();
+            services.AddSingleton<IService<PlaneDTO>, PlaneService>();
+            services.AddSingleton<IService<StewardessDTO>, StewardessService>();
+            services.AddSingleton<IService<TicketDTO>, TicketService>();
+            services.AddSingleton<IService<TypePlaneDTO>, TypePlaneService>();
+            services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=AirportDB;Trusted_Connection=True;";
+            services.AddDbContext<AirportContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
