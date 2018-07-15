@@ -8,6 +8,8 @@ using HometaskEntity.BLL.DTOs;
 using HometaskEntity.BLL.Service;
 using HometaskEntity.DAL.Contracts;
 using HometaskEntity.DAL;
+using HometaskEntity.DAL.Models;
+using HometaskEntity.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace HometaskEntity
@@ -35,8 +37,9 @@ namespace HometaskEntity
             services.AddSingleton<IService<TicketDTO>, TicketService>();
             services.AddSingleton<IService<TypePlaneDTO>, TypePlaneService>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=AirportDB;Trusted_Connection=True;";
-            services.AddDbContext<AirportContext>(options => options.UseSqlServer(connection));
+            var connectionString = @"Server=(localdb)\mssqllocaldb;Database=AirportDB;Trusted_Connection=True;";
+            services.AddDbContext<AirportContext>(options =>
+            options.UseSqlServer(connectionString, b => b.MigrationsAssembly("HometaskEntity")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

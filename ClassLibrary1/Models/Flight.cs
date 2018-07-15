@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace HometaskEntity.DAL.Models
 {
     public class Flight
     {
+        [Key]
         public int Number { get; set; }
         public string PointOfDeparture { get; set; }
         public DateTime TimeOfDeparture { get; set; }
