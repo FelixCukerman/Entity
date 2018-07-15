@@ -28,14 +28,14 @@ namespace HometaskEntity
         {
             services.AddMvc();
             services.AddAutoMapper();
-            services.AddSingleton<IService<AviatorDTO>, AviatorService>();
-            services.AddSingleton<IService<CrewDTO>, CrewService>();
-            services.AddSingleton<IService<DepartureDTO>, DepartureService>();
-            services.AddSingleton<IService<FlightDTO>, FlightService>();
-            services.AddSingleton<IService<PlaneDTO>, PlaneService>();
-            services.AddSingleton<IService<StewardessDTO>, StewardessService>();
-            services.AddSingleton<IService<TicketDTO>, TicketService>();
-            services.AddSingleton<IService<TypePlaneDTO>, TypePlaneService>();
+            services.AddScoped<IService<AviatorDTO>, AviatorService>();
+            services.AddScoped<IService<CrewDTO>, CrewService>();
+            services.AddScoped<IService<DepartureDTO>, DepartureService>();
+            services.AddScoped<IService<FlightDTO>, FlightService>();
+            services.AddScoped<IService<PlaneDTO>, PlaneService>();
+            services.AddScoped<IService<StewardessDTO>, StewardessService>();
+            services.AddScoped<IService<TicketDTO>, TicketService>();
+            services.AddScoped<IService<TypePlaneDTO>, TypePlaneService>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             var connectionString = @"Server=(localdb)\mssqllocaldb;Database=AirportDB;Trusted_Connection=True;";
             services.AddDbContext<AirportContext>(options =>
