@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HometaskEntity.BLL.Service;
 using HometaskEntity.BLL.DTOs;
+using HometaskEntity.BLL.Contracts;
 
 namespace HometaskEntity.Controllers
 {
@@ -13,8 +14,8 @@ namespace HometaskEntity.Controllers
     [Route("api/Departure")]
     public class DepartureController : Controller
     {
-        private DepartureService departureService;
-        public DepartureController(DepartureService departureService)
+        private IService<DepartureDTO> departureService;
+        public DepartureController(IService<DepartureDTO> departureService)
         {
             this.departureService = departureService;
         }

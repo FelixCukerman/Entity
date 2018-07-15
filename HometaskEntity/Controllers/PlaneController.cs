@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HometaskEntity.BLL.Service;
 using HometaskEntity.BLL.DTOs;
+using HometaskEntity.BLL.Contracts;
 
 namespace HometaskEntity.Controllers
 {
@@ -13,8 +14,8 @@ namespace HometaskEntity.Controllers
     [Route("api/Plane")]
     public class PlaneController : Controller
     {
-        private PlaneService planeService;
-        public PlaneController(PlaneService planeService)
+        private IService<PlaneDTO> planeService;
+        public PlaneController(IService<PlaneDTO> planeService)
         {
             this.planeService = planeService;
         }

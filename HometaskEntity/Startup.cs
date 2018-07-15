@@ -36,7 +36,8 @@ namespace HometaskEntity
             services.AddScoped<IService<StewardessDTO>, StewardessService>();
             services.AddScoped<IService<TicketDTO>, TicketService>();
             services.AddScoped<IService<TypePlaneDTO>, TypePlaneService>();
-            services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<DataSource>();
             var connectionString = @"Server=(localdb)\mssqllocaldb;Database=AirportDB;Trusted_Connection=True;";
             services.AddDbContext<AirportContext>(options =>
             options.UseSqlServer(connectionString, b => b.MigrationsAssembly("HometaskEntity")));

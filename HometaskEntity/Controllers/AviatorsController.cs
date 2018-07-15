@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using HometaskEntity.BLL.Contracts;
 using HometaskEntity.BLL.Service;
 using HometaskEntity.BLL.DTOs;
 
@@ -13,8 +14,8 @@ namespace HometaskEntity.Controllers
     [Route("api/Aviators")]
     public class AviatorsController : Controller
     {
-        private AviatorService aviatorService { get; set; }
-        public AviatorsController(AviatorService aviatorService)
+        private IService<AviatorDTO> aviatorService { get; set; }
+        public AviatorsController(IService<AviatorDTO> aviatorService)
         {
             this.aviatorService = aviatorService;
         }

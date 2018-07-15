@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HometaskEntity.BLL.Service;
 using HometaskEntity.BLL.DTOs;
+using HometaskEntity.BLL.Contracts;
 
 namespace HometaskEntity.Controllers
 {
@@ -13,8 +14,8 @@ namespace HometaskEntity.Controllers
     [Route("api/Stewardess")]
     public class StewardessController : Controller
     {
-        private StewardessService stewardessService;
-        public StewardessController(StewardessService stewardessService)
+        private IService<StewardessDTO> stewardessService;
+        public StewardessController(IService<StewardessDTO> stewardessService)
         {
             this.stewardessService = stewardessService;
         }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HometaskEntity.BLL.Service;
 using HometaskEntity.BLL.DTOs;
+using HometaskEntity.BLL.Contracts;
 
 namespace HometaskEntity.Controllers
 {
@@ -13,8 +14,8 @@ namespace HometaskEntity.Controllers
     [Route("api/Ticket")]
     public class TicketController : Controller
     {
-        private TicketService ticketService;
-        public TicketController(TicketService ticketService)
+        private IService<TicketDTO> ticketService;
+        public TicketController(IService<TicketDTO> ticketService)
         {
             this.ticketService = ticketService;
         }
