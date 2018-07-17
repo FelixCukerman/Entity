@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,21 +25,37 @@ namespace HometaskEntity.Controllers
         [HttpGet]
         public List<AviatorDTO> Get()
         {
-            return aviatorService.GetAll();
+            var aviators = aviatorService.GetAll();
+            if (aviators.Count != 0 || aviators != null)
+                return aviators;
+            else
+                throw new Exception("Bad request");
         }
 
         // GET: api/Aviators/5
         [HttpGet("{id}")]
         public AviatorDTO Get(int id)
         {
-            return aviatorService.GetAll().FirstOrDefault(x => x.Id == id);
+            var aviator = aviatorService.GetAll().FirstOrDefault(x => x.Id == id);
+            if (aviator != null || id > 0)
+                return aviator;
+            else
+                throw new Exception("Bad request");
         }
         
         // POST: api/Aviators
         [HttpPost]
-        public void Post([FromBody]AviatorDTO value)
+        public HttpResponseMessage Post([FromBody]AviatorDTO value)
         {
-            aviatorService.Create(value);
+            if (ModelState.IsValid && value != null)
+            {
+                aviatorService.Create(value);
+                return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+            }
+            else
+            {
+                return new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest);
+            }
         }
         
         // PUT: api/Aviators/5
@@ -52,7 +69,12 @@ namespace HometaskEntity.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            aviatorService.Delete(id);
+            var aviator = aviatorService.GetAll().FirstOrDefault(x => x.Id == id);
+            if (aviator != null || id > 0)
+                aviatorService.Delete(id);
+            else
+                throw new Exception("Bad request");
+
         }
     }
 }

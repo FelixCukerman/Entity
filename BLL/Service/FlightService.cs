@@ -17,11 +17,11 @@ namespace HometaskEntity.BLL.Service
         }
         public List<FlightDTO> GetAll()
         {
-            return Mapper.Map<List<FlightDTO>>(unitOfWork.Departures.GetAll());
+            return Mapper.Map<List<FlightDTO>>(unitOfWork.Flights.GetAll());
         }
         public FlightDTO GetById(int id)
         {
-            return Mapper.Map<List<FlightDTO>>(unitOfWork.Departures.GetAll()).FirstOrDefault(x => x.Number == id);
+            return Mapper.Map<List<FlightDTO>>(unitOfWork.Flights.GetAll()).FirstOrDefault(x => x.Number == id);
         }
         public void Create(FlightDTO flightDTO)
         {

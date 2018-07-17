@@ -25,17 +25,20 @@ namespace HometaskEntity.DAL.Repositories
         public void Create(Aviator aviator)
         {
             data.Aviators.Add(aviator);
+            data.SaveChanges();
         }
         public void Update(int id, Aviator aviator)
         {
             var item = data.Aviators.FirstOrDefault(x => x.Id == id);
             item = aviator;
+            data.SaveChanges();
         }
         public void Delete(int id)
         {
             Aviator aviator = data.Aviators.FirstOrDefault(x => x.Id == id);
             if (aviator != null)
                 data.Aviators.Remove(aviator);
+            data.SaveChanges();
         }
     }
 }

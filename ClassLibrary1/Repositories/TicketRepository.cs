@@ -26,17 +26,20 @@ namespace HometaskEntity.DAL.Repositories
         public void Create(Ticket ticket)
         {
             data.Tickets.Add(ticket);
+            data.SaveChanges();
         }
         public void Update(int id, Ticket ticket)
         {
             var item = data.Tickets.FirstOrDefault(x => x.Id == id);
             item = ticket;
+            data.SaveChanges();
         }
         public void Delete(int id)
         {
             Ticket ticket = data.Tickets.FirstOrDefault(x => x.Id == id);
             if (ticket != null)
                 data.Tickets.Remove(ticket);
+            data.SaveChanges();
         }
     }
 }

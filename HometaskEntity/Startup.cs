@@ -52,7 +52,6 @@ namespace HometaskEntity
             }
 
             app.UseMvc();
-
             new DataSource(context);
         }
     }

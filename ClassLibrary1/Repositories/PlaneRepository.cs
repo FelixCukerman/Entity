@@ -25,17 +25,20 @@ namespace HometaskEntity.DAL.Repositories
         public void Create(Plane plane)
         {
             data.Planes.Add(plane);
+            data.SaveChanges();
         }
         public void Update(int id, Plane plane)
         {
             var item = data.Planes.FirstOrDefault(x => x.Id == id);
             item = plane;
+            data.SaveChanges();
         }
         public void Delete(int id)
         {
             Plane plane = data.Planes.FirstOrDefault(x => x.Id == id);
             if (plane != null)
                 data.Planes.Remove(plane);
+            data.SaveChanges();
         }
     }
 }

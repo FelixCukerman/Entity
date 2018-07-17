@@ -26,17 +26,20 @@ namespace HometaskEntity.DAL.Repositories
         public void Create(Crew crew)
         {
             data.Crews.Add(crew);
+            data.SaveChanges();
         }
         public void Update(int id, Crew crew)
         {
             var item = data.Crews.FirstOrDefault(x => x.Id == id);
             item = crew;
+            data.SaveChanges();
         }
         public void Delete(int id)
         {
             Crew crew = data.Crews.FirstOrDefault(x => x.Id == id);
             if (crew != null)
                 data.Crews.Remove(crew);
+            data.SaveChanges();
         }
     }
 }

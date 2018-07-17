@@ -14,7 +14,7 @@ namespace HometaskEntity.Controllers
     [Route("api/Flight")]
     public class FlightController : Controller
     {
-        private IService<FlightDTO> flightService;
+        private IService<FlightDTO> flightService { get; set; }
         public FlightController(IService<FlightDTO> flightService)
         {
             this.flightService = flightService;

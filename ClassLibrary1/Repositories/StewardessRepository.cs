@@ -26,17 +26,20 @@ namespace HometaskEntity.DAL.Repositories
         public void Create(Stewardess stewardess)
         {
             data.Stewardesses.Add(stewardess);
+            data.SaveChanges();
         }
         public void Update(int id, Stewardess stewardess)
         {
             var item = data.Stewardesses.FirstOrDefault(x => x.Id == id);
             item = stewardess;
+            data.SaveChanges();
         }
         public void Delete(int id)
         {
             Stewardess stewardess = data.Stewardesses.FirstOrDefault(x => x.Id == id);
             if (stewardess != null)
                 data.Stewardesses.Remove(stewardess);
+            data.SaveChanges();
         }
     }
 }

@@ -26,17 +26,20 @@ namespace HometaskEntity.DAL.Repositories
         public void Create(Departure departure)
         {
             data.Departures.Add(departure);
+            data.SaveChanges();
         }
         public void Update(int id, Departure departure)
         {
             var item = data.Departures.FirstOrDefault(x => x.Id == id);
             item = departure;
+            data.SaveChanges();
         }
         public void Delete(int id)
         {
             Departure departure = data.Departures.FirstOrDefault(x => x.Id == id);
             if (departure != null)
                 data.Departures.Remove(departure);
+            data.SaveChanges();
         }
     }
 }
