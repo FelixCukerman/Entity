@@ -31,9 +31,9 @@ namespace TestApp
         {
             var aviators = new List<Aviator>
             {
-                new Aviator { Id = 1, Name = "Alex", Surname = "Harper", Experience = 3, DateOfBirthday = DateTime.MinValue},
-                new Aviator { Id = 2, Name = "Qwer", Surname = "Tiger", Experience = 2, DateOfBirthday = DateTime.Now},
-                new Aviator { Id = 3, Name = "Chery", Surname = "Bim", Experience = 1, DateOfBirthday = DateTime.MaxValue}
+                new Aviator { Id = 1, Name = "Jacob", Surname = "Fernandes", Experience = 3, DateOfBirthday = DateTime.MinValue},
+                new Aviator { Id = 2, Name = "Natalie", Surname = "Lust", Experience = 2, DateOfBirthday = DateTime.Now},
+                new Aviator { Id = 3, Name = "Sebastian", Surname = "Perairo", Experience = 1, DateOfBirthday = DateTime.MaxValue}
             };
             return aviators;
         }
@@ -60,7 +60,6 @@ namespace TestApp
             {
                 controller.Get(-1);
             };
-
             var ex = Record.Exception(result);
             //Assert
             Assert.IsType<Exception>(ex);
@@ -83,7 +82,7 @@ namespace TestApp
         {
             //Arrange
             AviatorsController controller = new AviatorsController(service);
-            Aviator aviator = GetTestAviators().FirstOrDefault(x => x.Id == 1);
+            Aviator aviator = new Aviator { Id = 46, Name = "Nikita", Surname = "Gribiwe", Experience = 34, DateOfBirthday = DateTime.Now.AddHours(13)};
             //Act
             var result = controller.Post(Mapper.Map<AviatorDTO>(aviator));
             //Assert
@@ -100,7 +99,6 @@ namespace TestApp
             {
                 controller.Delete(-1);
             };
-
             var ex = Record.Exception(result);
             //Assert
             Assert.IsType<Exception>(ex);
