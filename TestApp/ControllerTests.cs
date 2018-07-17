@@ -2,9 +2,6 @@
 using AutoMapper;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Linq;
-using System.Text;
-using Microsoft.AspNetCore.Mvc;
 using HometaskEntity.Controllers;
 using HometaskEntity.BLL.Service;
 using HometaskEntity.DAL.Contracts;
